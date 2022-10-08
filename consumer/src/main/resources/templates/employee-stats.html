@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Employee Stats</title>
+	<style>
+		table {
+			border-color: blue;
+		}
+		th {
+			padding: 10px;
+		}
+		td {
+			padding: 10px;
+			
+		}
+		.value {
+			color: red;
+		}
+	</style>
+</head>
+	<body style="display: flex; height: 100vh; justify-content: center; align-items: center;">
+		<table border="6">
+			<thead>
+				<th>Reference</th>
+				<th>Value</th>
+			</thead>
+			<tbody>
+				<tr>
+					<!-- Because ladies first :) -->
+					<td>Female Employee Count</td>
+					<td class="value" th:text="${stat.femaleEmployeeCount}"></td>
+				</tr>
+				<tr>
+					<td>Male Employee Count</td>
+					<td class="value" th:text="${stat.maleEmployeeCount}"></td>
+				</tr>
+				<tr>
+					<td>Total Employee Count</td>
+					<td class="value" th:text="${stat.totalEmployeeCount}"></td>
+				</tr>
+				<tr>
+					<td>Preparation Delay</td>
+					<td class="value" th:text="${stat.reportGenerationDelayInSeconds + ' seconds'}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
