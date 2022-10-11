@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ratul.stream.json.response.server.dto.EmployeeFilterDto;
 import com.ratul.stream.json.response.server.entity.Employee;
 import com.ratul.stream.json.response.server.repository.EmployeeRepository;
 
@@ -38,7 +39,7 @@ public class EmployeeService {
 		return employeeRepository.findAll();
 	}
 
-	public void findAllStreaming(OutputStream outputStream) throws IOException {
+	public void findAllStreaming(EmployeeFilterDto  employeeFilterDto, OutputStream outputStream) throws IOException {
 		Stream<Employee> employees = employeeRepository.streamAll();
 
 		JsonGenerator jsonGenerator = objectMapper.getFactory().createGenerator(outputStream);

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.ratul.stream.json.response.server.dto.EmployeeFilterDto;
 import com.ratul.stream.json.response.server.entity.Employee;
 import com.ratul.stream.json.response.server.service.EmployeeService;
 
@@ -27,9 +28,9 @@ public class EmployeeController {
 	}
 
 	@GetMapping(value = "/employees", params = "stream")
-	public void streamAllEmployee(HttpServletResponse response) throws IOException {
+	public void streamAllEmployee(HttpServletResponse response, EmployeeFilterDto employeeFilterDto) throws IOException {
 		response.setHeader(HttpHeaders.CONTENT_ENCODING, MediaType.APPLICATION_JSON_VALUE);
-		employeeService.findAllStreaming(response.getOutputStream());
+		employeeService.findAllStreaming(employeeFilterDto, response.getOutputStream());
 	}
 }
 
